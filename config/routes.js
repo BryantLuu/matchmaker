@@ -5,7 +5,7 @@ module.exports = function(app){
     res.render('index');
   })
 
-  app.post('/match', function (req, res){
-    matches.addQueue(req, res);
+  app.post('/findmatch', function (req, res){
+    matches.findMatch(req, res);
   })
 };

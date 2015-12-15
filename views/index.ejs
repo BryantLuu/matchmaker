@@ -4,6 +4,7 @@
 <title>MatchMaker</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
@@ -12,10 +13,24 @@
 <div class="container">
   <div class='col-md-12'>
     <h1>Tennis Matchmaker</h1>
-    <form action="/match" method="post">
-      <label for="message">
-      <input name="message" type="text">
-      <button type="submit">Match</button>
+    <form action="/findmatch" method="post">
+      <div class="form-group">
+        <label for="skill">Skill Level: </label>
+        <select name="skill" class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="usertel">Phone Number: </label>
+        <input type="tel" class="form-control" name="usertel">
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Match</button>
     </form>
   </div>
 </div>
