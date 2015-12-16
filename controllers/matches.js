@@ -2,7 +2,7 @@
 var credentials = require('../config/credentials.js')
  
 //require the Twilio module and create a REST client 
-var client = require('twilio')(credentials.accountSid, credentials.authToken); 
+var client = require('twilio')(process.env.TWILIO_ACCOUNT_SID || credentials.accountSid, process.env.TWILIO_AUTH_TOKEN || credentials.authToken); 
 
 var matchQueue = {'1' : [],
                   '2' : [],
