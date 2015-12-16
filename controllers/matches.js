@@ -37,14 +37,13 @@ module.exports = {
     });
     
   },
-  verifiedNumber: function(req, res){
-
-  },
   receivedMessage: function(req, res){
     if (matched[req.body.From]){
       sendMessage(matched[req.body.From], req.body.Body);
+    } else if (req.body.Body == "clearbl") {
+      matched = {};
     } else {
-      sendMessage(req.body.From, "You are not yet in queue");
+      sendMessage(req.body.From, "You are not yet in queue. Please reenter");
       console.log("matchqueue", matchQueue);
       console.log("matched", matched);
     }
