@@ -44,6 +44,8 @@ module.exports = {
       sendMessage(matched[req.body.From], req.body.Body);
     } else {
       sendMessage(req.body.From, "You are not yet in queue");
+      console.log("matchqueue", matchQueue);
+      console.log("matched", matched);
     }
   }
 }
