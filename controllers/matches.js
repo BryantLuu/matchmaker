@@ -37,7 +37,7 @@ module.exports = {
   },
   verifiedNumber: function(req, res){
 
-  }
+  },
   receivedMessage: function(req, res){
     console.log (req.body);
   }
