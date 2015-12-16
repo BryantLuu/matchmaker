@@ -9,6 +9,10 @@ module.exports = function(app){
     matches.findMatch(req, res);
   })
 
+  app.post('/receivedMessage', function (req, res){
+    matches.receivedMessage(req, res);
+  })
+
   app.get('/confirmation', function (req, res){
     matches.confirmation
   })
