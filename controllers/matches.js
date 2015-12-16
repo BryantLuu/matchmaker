@@ -14,7 +14,17 @@ var matchQueue = {'1' : [],
 
 module.exports = {
   findMatch: function(req, res){
-    verifyUser(req.body.usertel)    
+    client.outgoingCallerIds.create({
+      phoneNumber: req.body.usertel
+    }, function(err, callerId) {
+      if (callerId){
+        res.render('confirmation', {callerId: callerId})
+      } else if (err.code === 21450){
+        sendMessage(req.body.usertel, req.body.skill)
+        res.redirect('/');
+      }
+    });
+    
   },
   verifiedNumber: function(req, res){
 
@@ -29,20 +39,11 @@ function queueOrMatch(user){
   }
 }
 
-function validateUser(num){
-  client.outgoingCallerIds.create({
-    phoneNumber: num,
-    statusCallback: "url" // url
-  }, function(err, callerId) {
-    return callerId.validationCode;
-  });
-}
-
-function sendMessage(num, mess){
+function sendMessage(num, skill){
   client.messages.create({ 
       to: num, 
       from: "+16503833792", 
-      body: mess, 
+      body: "You are waiting to be matched with " + skill + " level players", 
       mediaUrl: "http://farm2.static.flickr.com/1075/1404618563_3ed9a44a3a.jpg",  
     }, function(err, message) { 
           console.log(message); 

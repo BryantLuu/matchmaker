@@ -8,4 +8,8 @@ module.exports = function(app){
   app.post('/findmatch', function (req, res){
     matches.findMatch(req, res);
   })
+
+  app.get('/confirmation', function (req, res){
+    matches.confirmation
+  })
 };
