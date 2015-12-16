@@ -26,10 +26,11 @@ module.exports = {
           matchQueue[skill].push(usertel);
           sendMessage(usertel, "You are waiting to be matched with level " + skill + " players.")
         } else {
+          var matchedNum = matchQueue[skill][0].shift();
           sendMessage(usertel, "You have been matched with a level " + skill + " player. Start replying to text each other")
-          sendMessage(matchQueue[skill][0].shift(), "You have been matched with a level " + skill + " player. Start replying to text each other")
-          matched[usertel] = matchQueue[skill][0].shift();
-          matched[matchQueue[skill][0].shift()] = usertel;
+          sendMessage(matchedNum, "You have been matched with a level " + skill + " player. Start replying to text each other")
+          matched[usertel] = matchedNum;
+          matched[matchedNum] = usertel;
         }
         res.redirect('/');
       }
