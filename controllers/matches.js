@@ -24,7 +24,7 @@ module.exports = {
         
         if (matchQueue[skill].length == 0){
           matchQueue[skill].push(usertel);
-          sendMessage(usertel, "You are waiting to be matched with level " + skill + " players.")
+          firstMessage(usertel, "You are waiting to be matched with level " + skill + " players.")
         } else {
           var matchedNum = matchQueue[skill].shift();
           sendMessage(usertel, "You have been matched with a level " + skill + " player. Start replying to text each other")
@@ -58,12 +58,22 @@ function queueOrMatch(user){
   }
 }
 
-function sendMessage(num, message){
+function firstMessage(num, message){
   client.messages.create({ 
       to: num, 
       from: "+16503833792", 
       body: message, 
-      mediaUrl: "http://tennisweek.com/wp-content/uploads/2014/03/Tennis-Ball.jpg",  
+      mediaUrl: "http://tennisweek.com/wp-content/uploads/2014/03/Tennis-Ball.jpg"  
+    }, function(err, message) { 
+          console.log(message); 
+    });
+}
+
+function sendMessage(num, message){
+  client.messages.create({ 
+      to: num, 
+      from: "+16503833792", 
+      body: message   
     }, function(err, message) { 
           console.log(message); 
     });
