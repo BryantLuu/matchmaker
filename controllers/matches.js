@@ -1,6 +1,6 @@
  
 //require the Twilio module and create a REST client 
-var client = require('twilio')
+var client = require('twilio')();
 
 var matchQueue = {'1' : [],
                   '2' : [],
